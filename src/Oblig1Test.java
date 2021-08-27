@@ -69,7 +69,8 @@ class Oblig1Test {
 
     @Test
     void antallUlikeSortert() {
-
+        int [] tabell1 = {1,1,1,2,22,22,26,35,35,35,40,555}; // 7 ulike verdier
+        assertEquals(7, Oblig1.antallUlikeSortert(tabell1));
     }
 
     @Test

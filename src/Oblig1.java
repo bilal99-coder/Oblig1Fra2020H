@@ -48,7 +48,10 @@ public class Oblig1 {
     * */
 
     public static int antallUlikeSortert(int [] a){
-        boolean erSortertStigende = sjekkSortert(a);  // Skjekk om tabellen a er stigende sortert
+        if (a.length == 0) {
+            return 0;
+        }
+        boolean erSortertStigende = sjekkSortert(a);  // Skjekk om tabellen a er stigende sortert og returnerer true eller false
         if (erSortertStigende == false){             //  Tabellen må vaere sortert stigende
             throw new IllegalStateException("Tabellen er ikke sortert stigende!");
         }
@@ -65,7 +68,7 @@ public class Oblig1 {
         // Når vi er ferdig så hav vi en tabell -unikeVerider- som har på seg alle og kun de unike verider i tabellen a
         for (int k = 1; k<a.length; ++k) {
             for (int j = 0; j< unikeVerdier.size(); ++j){
-                if (a[k] != unikeVerdier.get(j) ){
+                if (!unikeVerdier.contains(a[k])){
                     unikeVerdier.add(a[k]);
                 }
             }

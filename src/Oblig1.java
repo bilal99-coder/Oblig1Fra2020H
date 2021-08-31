@@ -117,4 +117,61 @@ public class Oblig1 {
                 antallOddeTall++;
         }
     }
+    public void quicksort(int[]a, int left, int right){
+        if(left >= right){
+            return;
+        }
+        //velger en pivot
+        int pivot_index = (left+right)/2;
+        int pivot = a[pivot_index];
+
+        // Partisjonering
+        // Sørg for at alle til høyre blir større enn eller lik pivot
+        // og at alle til venstre er mindre enn pivot
+
+        int new_pivot_index = partisjoner(a,left,right, pivot_index);
+
+        // Gjenta for høyre subliste og venstre subliste
+        quicksort(a, left, new_pivot_index-1);
+        quicksort(a, new_pivot_index+1, right);
+    }
+    public int byttPivotBakerst(int [] a, int begin, int end){
+        int pivot = (begin + end)/2;
+        int temp = a[end-1];
+        a[end-1] = a[pivot];
+        a[pivot] = temp;
+        return pivot;
+
+    }
+
+    public int partisjoner (int []a, int begin, int end, int pivot_index){
+        // First, move our pivot to the end of the array
+        bytt(a,pivot_index,end-1);
+        int left = begin;
+        int right = end-2;
+
+        // loop over the array and swap until left meets right
+        while (left < right){
+            // Find first element from the left larger than pivot
+            while (left <= right && a[left] < a[end-1]){
+                ++left;
+            }
+            // Find first element from the right smaller than pivot
+            while(left <= right && a[right] > a[end-1]){
+                --right;
+            }
+
+            //If left and right have not met, swap left and right
+            if(left<right){
+                bytt(a, left,right);
+                ++left;
+                --right;
+            }
+        }
+        //Swap pivot element back
+        bytt(a,left,end-1);
+
+        // Rerurn new index of pivot element
+        return left;
+    }
 }

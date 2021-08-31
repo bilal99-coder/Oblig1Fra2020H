@@ -82,4 +82,14 @@ class Oblig1Test {
         assertEquals(false, Oblig1.sjekkSortert(ikkeSortert));
         assertFalse(Oblig1.sjekkSortert(ikkeSortert));
     }
+
+    @Test
+    void antallUlikeUsortert() {
+        int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
+        int [] a = {};
+        int [] b = {1};
+        assertEquals(4, Oblig1.antallUlikeUsortert(usortert));
+        assertEquals(0, Oblig1.antallUlikeUsortert(a));
+        assertEquals(1, Oblig1.antallUlikeUsortert(b));
+    }
 }

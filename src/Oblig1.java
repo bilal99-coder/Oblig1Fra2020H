@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -52,29 +53,17 @@ public class Oblig1 {
             return 0;
         }
         boolean erSortertStigende = sjekkSortert(a);  // Skjekk om tabellen a er stigende sortert og returnerer true eller false
+
         if (erSortertStigende == false){             //  Tabellen må vaere sortert stigende
             throw new IllegalStateException("Tabellen er ikke sortert stigende!");
         }
-
-        /* Denne er en tabell som vi skal lagre på kun de unike verdier som finnes på tabbelen a
-         Jeg velger å bruke ArrayList nå fordi den har en variabel stoorrelse som vi kan fylle på etterhvert */
-
-        ArrayList <Integer> unikeVerdier = new ArrayList<Integer>();
-        // Vi adder første elementet i tabbelen a inn i hjelpe-tabellen unikeVerider for å initialisere den.
-        unikeVerdier.add(0, a[0]);
-
-        // For hver tall i tabellen a går jeg gjennom unikeVerdier tabellen og skjekker om det finnes fra før, hvis ikke
-        // så legger jeg den til unikeVerdier tabellen
-        // Når vi er ferdig så hav vi en tabell -unikeVerider- som har på seg alle og kun de unike verider i tabellen a
-        for (int k = 1; k<a.length; ++k) {
-            for (int j = 0; j< unikeVerdier.size(); ++j){
-                if (!unikeVerdier.contains(a[k])){
-                    unikeVerdier.add(a[k]);
-                }
-            }
-        }
-        int antallUlikeVerdier = unikeVerdier.size(); // Hjelpeverdi som lagrer antall elementer i ulikeVerdier tabellen.
-        return antallUlikeVerdier;
+        int antallUlike =  1;  // AntallUlike teller antall antall ulike verdier i tabellen a. Tabellen skal ha minst en unik verdi uansett
+         for (int i = 1; i<a.length; ++i){
+             if(a[i] != a[i-1]) {
+                 antallUlike++;
+             }
+         }
+         return antallUlike;
     }
 
     // metode som skjekker om en tabell er sortert stigende
@@ -86,5 +75,46 @@ public class Oblig1 {
             }
         }
         return sortertStigende;
+    }
+
+    /* Metoden på Oppgave 3 */
+    public static int antallUlikeUsortert(int[] a){
+        if (a.length == 0) {
+            return 0;
+        }
+        int antallUlike =  1;
+        boolean finnesFraFoor = false;
+        for (int i =1; i< a.length; i++){
+            for(int j = 0; j<i ; j++){
+                if(a[i] == a[j]){
+                    finnesFraFoor = true;
+                }
+
+            }
+            if (finnesFraFoor == false){ // hvis den verdien a [i] ikke finnes fra før i del arrayet a[0:i] legger vi en ulik verdi til
+                antallUlike++;
+            }
+            finnesFraFoor = false; // tilbakestille finnesFraFoor til sin opprinelig verdi etter hver iterasjon
+        }
+
+        return antallUlike;
+        }
+
+
+
+    // Oppgave 4
+    public static void delSortering(int [] a){
+        // skal implementere quicksort her også
+        int n = a.length;
+        int antallOddeTall = 0;
+        int antallPartallTall = 0;
+        // løpe gjennom tabellen og telle antall odde- og partall
+        for (int i = 0; i < n ; ++i) {
+            if(a[i] % 2 == 0){
+                antallPartallTall++;
+            }
+            else
+                antallOddeTall++;
+        }
     }
 }

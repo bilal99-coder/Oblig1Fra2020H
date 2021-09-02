@@ -243,31 +243,28 @@ public class Oblig1 {
 
     public static int partisjonerr(int [] a, int pivot_index, int left, int right){
         int left_index = left;
-        int right_index = right;
+        int right_index = right-1;
         //int pivot = a[pivot_index];
         //Setter pivot bakerst
         bytt(a,pivot_index,right);
-        while(left_index < right_index-1){
+        while(left_index < right_index ){
             //finner den første elementet som er større enn vår pivot fra venstre
-            while(a[left_index] <= a[right] && left_index < right_index-1){
-                left_index++;
+            while(left_index <= right_index && a[left_index] < a[right]  ){
+                ++left_index;
             }
             //Nå starter fra høyre og finner den første elementet som er mindre enn vår pivot
-            while( (right_index-1) > left_index && a[right_index-1] >= a[right]){
-                right_index--; //left <= right && a[right] > a[end-1]
+            while( left_index <= right_index && a[right_index] > a[right]){
+                --right_index; //left <= right && a[right] > a[end-1]
             }
-            if (left_index < right_index-1){
-                bytt(a, left_index, right_index-1);
-                left_index++;
-                right_index-=1;
+            if (left_index < right_index){
+                bytt(a, left_index, right_index);
+                ++left_index;
+                --right_index;
             }
-
         }
         //bytt pivot tilbake til sin riktig plass nå
-        if(a[left_index] > a[right]){
-            bytt(a,left_index, right);
-        }
 
+        bytt(a,left_index, right);
         return left_index;
     }
 
@@ -275,7 +272,7 @@ public class Oblig1 {
         if(left >= right){
             return;
         }
-        int pivot_index = (left+right)/2;
+        int pivot_index = (left+right-1)/2;
         int partisjonering = partisjonerr(a,pivot_index,left,right);
         aQuicksort(a,left,partisjonering-1);
         aQuicksort(a,partisjonering+1, right);

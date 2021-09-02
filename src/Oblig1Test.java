@@ -174,9 +174,16 @@ class Oblig1Test {
         Oblig1.aQuicksort(b,0,b.length-1);
         System.out.println("\nDette er sortert arrayet");
         printArray(b);
+
     }
 
     @Test
     void universellSort() {
+        int [] a = {6,10,9,4,1,3,8,5,2,7};
+        System.out.println("This is the original array: ");
+        printArray(a);
+        Oblig1.universellSort(a);
+        System.out.println("\nDette er en universell sortert array");
+        printArray(a);
     }
 }

@@ -92,4 +92,84 @@ class Oblig1Test {
         assertEquals(0, Oblig1.antallUlikeUsortert(a));
         assertEquals(1, Oblig1.antallUlikeUsortert(b));
     }
+
+    @Test
+    void quicksort() {
+        int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
+        Oblig1.quicksort(usortert,0,usortert.length);
+
+    }
+    public static void main(String[] args){
+        int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
+        for(int i =0 ; i<usortert.length; ++i){
+            System.out.print(usortert[i]+" ");
+        }
+        Oblig1.quicksort(usortert,0,usortert.length);
+        System.out.println("\nEtter quick sort:");
+        for(int i =0 ; i<usortert.length; ++i){
+            System.out.print(usortert[i]+" ");
+        }
+
+
+        System.out.println("\nEdited quicksort -> ****");
+        Oblig1.quicksort(usortert,0,usortert.length);
+        System.out.println("");
+        System.out.println("Etter edited (partall og oddetall) quick sort:");
+        for(int i =0 ; i<usortert.length; ++i){
+            System.out.print(usortert[i]+" ");
+        }
+
+    }
+
+    @Test
+    void quicksortEdited() {
+    }
+
+    @Test
+    void sorter_2n() {
+        int [] a = {6,10,9,4,1,3,8,5,2,7};
+        System.out.println("This is the original array: ");
+        printArray(a);
+        Oblig1.sorter_2n(a);
+        System.out.println("\nDette er sortert tall basert på om det er odde eller partall");
+        printArray(a);
+        int pivot = Oblig1.sorter_2n(a);
+        System.out.println("Vår pivot er " +pivot);
+
+        int [] b = {7,5,8,2,16,3,1,8,28,92,7,1};
+        System.out.println("This is the original array: ");
+        printArray(b);
+        Oblig1.sorter_2n(b);
+        System.out.println("\nDette er sortert tall basert på om det er odde eller partall");
+        printArray(b);
+        int pivot1 = Oblig1.sorter_2n(b);
+        System.out.println("Vår pivot er " +pivot1);
+
+    }
+
+    public static void printArray(int []a ){
+        String ut = "";
+        for (int i = 0; i < a.length ; i++) {
+            ut += a[i] +" ";
+        }
+        System.out.println(ut);
+    }
+
+    @Test
+    void partisjonerr() {
+    }
+
+    @Test
+    void aQuicksort() {
+        int [] a = {6,10,-5,9,4,1,3,8,-9,5,7,2,7};
+        System.out.println("This is the original array: ");
+        printArray(a);
+        Oblig1.aQuicksort(a,0,a.length-1);
+        System.out.println("\nDette er sortert arrayet");
+        printArray(a);
+    }
+
+    @Test
+    void universellSort() {
+    }
 }

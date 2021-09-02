@@ -117,7 +117,7 @@ public class Oblig1 {
                 antallOddeTall++;
         }
     }
-    public void quicksort(int[]a, int left, int right){
+    public static void quicksort(int[] a, int left, int right){
         if(left >= right){
             return;
         }
@@ -135,16 +135,8 @@ public class Oblig1 {
         quicksort(a, left, new_pivot_index-1);
         quicksort(a, new_pivot_index+1, right);
     }
-    public int byttPivotBakerst(int [] a, int begin, int end){
-        int pivot = (begin + end)/2;
-        int temp = a[end-1];
-        a[end-1] = a[pivot];
-        a[pivot] = temp;
-        return pivot;
 
-    }
-
-    public int partisjoner (int []a, int begin, int end, int pivot_index){
+    public static int partisjoner(int[] a, int begin, int end, int pivot_index){
         // First, move our pivot to the end of the array
         bytt(a,pivot_index,end-1);
         int left = begin;
@@ -173,5 +165,125 @@ public class Oblig1 {
 
         // Rerurn new index of pivot element
         return left;
+    }
+
+    public static int par_OddeTallPartisjonering(int[] a, int begin, int end, int pivot_index){
+        bytt(a, pivot_index, end-1);
+        int right = 0;
+        int left = end-2;
+
+        while (left < right){
+            // Finner foorste element fra venstre som er partall
+            while (left <= right && a[left] % 2 != 0){
+                ++left;
+            }
+            // Finner foorste element fra høyre som er  oddetall
+            while(left <= right && a[right] % 2 == 0){
+                --right;
+            }
+            if(left < right){
+                bytt(a, left, right);
+                ++left;
+                --right;
+            }
+        }
+        // bytt pivot element tilbake
+        bytt(a,left, end-1);
+        // rerturn new index of pivot element
+        return left;
+    }
+
+    public static void quicksortEdited(int[] a, int left, int right){
+        if(left >= right){
+            return;
+        }
+        //velger en pivot
+        int pivot_index = par_OddeTallPartisjonering( a, left, right, left-1);
+        int pivot = a[pivot_index];
+
+        // Partisjonering
+        // Sørg for at alle til høyre blir større enn eller lik pivot
+        // og at alle til venstre er mindre enn pivot
+
+        int new_pivot_index = partisjoner(a,left,right, pivot_index);
+
+        // Gjenta for høyre subliste og venstre subliste
+        quicksort(a, left, new_pivot_index-1);
+        quicksort(a, new_pivot_index+1, right);
+    }
+
+    public static int sorter_2n(int []a ){
+        int left_index = 0;
+        int right_index = a.length-1;
+        // velger en pivot
+        int pivot_index =  (left_index + right_index)/2;
+        int pivot = a[pivot_index];
+        //swap pivot element back of the array
+        bytt(a, pivot, a[right_index]);
+
+        while(left_index < right_index-1){
+            // skjekker for å finne den første partall fra venstre
+            while(a[left_index] % 2 != 0){
+                left_index++;
+            }
+            // skjekker for å finne den første elementet fra høyre som er oddetall
+            while(a[right_index] % 2 == 0){
+                right_index --;
+            }
+            if(left_index< right_index){
+                bytt(a, left_index, right_index);
+                ++left_index;
+                --right_index;
+            }
+        }
+        // Bytt pivot tilbake
+        bytt(a,left_index,right_index);
+        return left_index;
+    }
+
+    public static int partisjonerr(int [] a, int pivot_index, int left, int right){
+        int left_index = left;
+        int right_index = right;
+        int pivot = a[pivot_index];
+        //Setter pivot bakerst
+        bytt(a,pivot_index,right);
+        while(left_index < right_index-1){
+            //finner den første elementet som er større enn vår pivot fra venstre
+            while(a[left_index] <= pivot && left_index < a.length-1){
+                left_index++;
+            }
+            //Nå starter fra høyre og finner den første elementet som er mindre enn vår pivot
+            while(a[right_index-1] >= pivot && right_index > left_index+1){
+                right_index --; //left <= right && a[right] > a[end-1]
+            }
+            if (left_index < right_index){
+                bytt(a, left_index, right_index);
+                left_index++;
+                right_index--;
+            }
+        }
+        //bytt pivot tilbake til opprinnelige plassen
+        bytt(a,pivot_index, right_index);
+
+        return left_index;
+    }
+
+    public static void aQuicksort(int[] a, int left, int right){
+        if(left >= right){
+            return;
+        }
+        int pivot_index = (left+right)/2;
+        int partisjonering = partisjonerr(a,pivot_index,left,right);
+        aQuicksort(a,left,partisjonering-1);
+        aQuicksort(a,partisjonering+1, right);
+    }
+
+
+
+
+    public static void universellSort(int [] a){
+        int pivot = sorter_2n(a);
+        aQuicksort(a,0,pivot);
+        aQuicksort(a,pivot+1,a.length-1);
     }
 }

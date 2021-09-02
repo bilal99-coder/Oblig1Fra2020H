@@ -244,26 +244,29 @@ public class Oblig1 {
     public static int partisjonerr(int [] a, int pivot_index, int left, int right){
         int left_index = left;
         int right_index = right;
-        int pivot = a[pivot_index];
+        //int pivot = a[pivot_index];
         //Setter pivot bakerst
         bytt(a,pivot_index,right);
         while(left_index < right_index-1){
             //finner den første elementet som er større enn vår pivot fra venstre
-            while(a[left_index] <= pivot && left_index < a.length-1){
+            while(a[left_index] <= a[right] && left_index < right_index-1){
                 left_index++;
             }
             //Nå starter fra høyre og finner den første elementet som er mindre enn vår pivot
-            while(a[right_index-1] >= pivot && right_index > left_index+1){
-                right_index --; //left <= right && a[right] > a[end-1]
+            while( (right_index-1) > left_index && a[right_index-1] >= a[right]){
+                right_index--; //left <= right && a[right] > a[end-1]
             }
-            if (left_index < right_index){
-                bytt(a, left_index, right_index);
+            if (left_index < right_index-1){
+                bytt(a, left_index, right_index-1);
                 left_index++;
-                right_index--;
+                right_index-=1;
             }
+
         }
-        //bytt pivot tilbake til opprinnelige plassen
-        bytt(a,pivot_index, right_index);
+        //bytt pivot tilbake til sin riktig plass nå
+        if(a[left_index] > a[right]){
+            bytt(a,left_index, right);
+        }
 
         return left_index;
     }

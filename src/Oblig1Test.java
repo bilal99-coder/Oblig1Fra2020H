@@ -161,12 +161,19 @@ class Oblig1Test {
 
     @Test
     void aQuicksort() {
-        int [] a = {6,10,-5,9,4,1,3,8,-9,5,7,2,7};
+        int [] a = {6,10,9,4,1,3,8,5,2,7};
         System.out.println("This is the original array: ");
         printArray(a);
         Oblig1.aQuicksort(a,0,a.length-1);
         System.out.println("\nDette er sortert arrayet");
         printArray(a);
+
+        int [] b = {6,10,9,2};
+        System.out.println("This is the original array: ");
+        printArray(b);
+        Oblig1.aQuicksort(b,0,b.length-1);
+        System.out.println("\nDette er sortert arrayet");
+        printArray(b);
     }
 
     @Test

@@ -102,7 +102,7 @@ public class Oblig1 {
 
 
 
-    // Oppgave 4
+    /* // Oppgave 4
     public static void delSortering(int [] a){
         // skal implementere quicksort her også
         int n = a.length;
@@ -210,7 +210,7 @@ public class Oblig1 {
         // Gjenta for høyre subliste og venstre subliste
         quicksort(a, left, new_pivot_index-1);
         quicksort(a, new_pivot_index+1, right);
-    }
+    }*/
 
     public static int sorter_2n(int []a ){
         int left_index = 0;

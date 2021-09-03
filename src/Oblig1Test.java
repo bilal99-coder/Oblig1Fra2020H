@@ -172,7 +172,7 @@ class Oblig1Test {
         System.out.println("This is the original array: ");
         printArray(b);
         Oblig1.aQuicksort(b,0,b.length-1);
-        System.out.println("\nDette er sortert arrayet");
+        System.out.println("\nDette er sortert arrayet ");
         printArray(b);
 
     }

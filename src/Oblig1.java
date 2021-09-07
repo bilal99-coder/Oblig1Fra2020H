@@ -241,39 +241,34 @@ public class Oblig1 {
         return left_index;
     }
 
-    public static int partisjonerr(int [] a, int pivot_index, int left, int right){
-        int left_index = left;
-        int right_index = right-1;
-        //int pivot = a[pivot_index];
-        //Setter pivot bakerst
-        bytt(a,pivot_index,right);
-        while(left_index < right_index ){
-            //finner den første elementet som er større enn vår pivot fra venstre
-            while(left_index <= right_index && a[left_index] < a[right]  ){
-                ++left_index;
-            }
-            //Nå starter fra høyre og finner den første elementet som er mindre enn vår pivot
-            while( left_index <= right_index && a[right_index] > a[right]){
-                --right_index; //left <= right && a[right] > a[end-1]
-            }
-            if (left_index < right_index){
-                bytt(a, left_index, right_index);
-                ++left_index;
-                --right_index;
-            }
-        }
-        //bytt pivot tilbake til sin riktig plass nå
+    public static int partisjonerr(int [] a, int left, int right){
+        int pivot = a[(left + right) / 2];
 
-        bytt(a,left_index, right);
-        return left_index;
+        do {
+            while (a[right] > pivot) {
+                right--;
+            }
+            while (a[left] < pivot) {
+                left++;
+            }
+
+            if (left <= right) {
+                int temp = a[left];
+                a[left] = a[right];
+                a[right] = temp;
+                left++;
+                right--;
+            }
+        } while (left <= right);
+
+        return left;
     }
 
     public static void aQuicksort(int[] a, int left, int right){
         if(left >= right){
             return;
         }
-        int pivot_index = (left+right-1)/2;
-        int partisjonering = partisjonerr(a,pivot_index,left,right);
+        int partisjonering = partisjonerr(a,left,right);
         aQuicksort(a,left,partisjonering-1);
         aQuicksort(a,partisjonering+1, right);
     }

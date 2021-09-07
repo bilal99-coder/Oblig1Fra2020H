@@ -96,7 +96,7 @@ class Oblig1Test {
     @Test
     void quicksort() {
         int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
-        Oblig1.quicksort(usortert,0,usortert.length);
+        Oblig1.aQuicksort(usortert,0,usortert.length);
 
     }
     public static void main(String[] args){
@@ -104,7 +104,7 @@ class Oblig1Test {
         for(int i =0 ; i<usortert.length; ++i){
             System.out.print(usortert[i]+" ");
         }
-        Oblig1.quicksort(usortert,0,usortert.length);
+        Oblig1.aQuicksort(usortert,0,usortert.length);
         System.out.println("\nEtter quick sort:");
         for(int i =0 ; i<usortert.length; ++i){
             System.out.print(usortert[i]+" ");
@@ -112,7 +112,7 @@ class Oblig1Test {
 
 
         System.out.println("\nEdited quicksort -> ****");
-        Oblig1.quicksort(usortert,0,usortert.length);
+        Oblig1.aQuicksort(usortert,0,usortert.length);
         System.out.println("");
         System.out.println("Etter edited (partall og oddetall) quick sort:");
         for(int i =0 ; i<usortert.length; ++i){

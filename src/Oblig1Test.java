@@ -207,7 +207,7 @@ class Oblig1Test {
     }
 
     @Test
-            void rotasjon2() {
+        void rotasjon2() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
         Oblig1.rotasjon2(a);
         printArray_char(a);
@@ -216,7 +216,12 @@ class Oblig1Test {
     @Test
     void rotasjon3() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
-        Oblig1.rotasjon(a);
+        Oblig1.rotasjon3(a);
         printArray_char(a);
+    }
+
+    @Test
+    void sirkel_rotasjon2() {
+
     }
 }

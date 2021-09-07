@@ -328,4 +328,32 @@ public class Oblig1 {
         }
         a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
     }
+
+    //Oppgave 6
+    //Vi skal ta i bruk algoritmen i rotasjon2 metode
+    public static void Sirkel_rotasjon2(char [] a, int k){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        int teller = 0;
+        char temp;
+        // I will group my array in n groups of the size |k|
+        int antall_grupper = lengde/k;
+        if(lengde%k ==1){
+            int spesial_index = siste_index-k; // in case lengde%k =1
+            for (int j = 0; j < k ; j++) {
+                bytt_char(a,j,siste_index-j);
+
+            }
+        }
+
+
+
+    }
+
+    private static void bytt_char(char[] a, int j, int i) {
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
 }

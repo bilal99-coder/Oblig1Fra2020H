@@ -92,13 +92,14 @@ class Oblig1Test {
         assertEquals(0, Oblig1.antallUlikeUsortert(a));
         assertEquals(1, Oblig1.antallUlikeUsortert(b));
     }
-
+/*
     @Test
     void quicksort() {
         int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
         Oblig1.quicksort(usortert,0,usortert.length);
 
     }
+
     public static void main(String[] args){
         int [] usortert = {4,4,5,3,5,3,55,3,4};  // Denne er en usortert tabell med 4 ulike verdier
         for(int i =0 ; i<usortert.length; ++i){
@@ -120,6 +121,7 @@ class Oblig1Test {
         }
 
     }
+    */
 
     @Test
     void quicksortEdited() {
@@ -155,7 +157,16 @@ class Oblig1Test {
         System.out.println(ut);
     }
 
-    @Test
+    public static void printArray_char(char []a ) {
+        String ut = "";
+        for (int i = 0; i < a.length; i++) {
+            ut += Character.toString(a[i]) + " ";
+        }
+        System.out.println(ut);
+    }
+
+
+        @Test
     void partisjonerr() {
     }
 
@@ -185,5 +196,27 @@ class Oblig1Test {
         Oblig1.universellSort(a);
         System.out.println("\nDette er en universell sortert array");
         printArray(a);
+
+    }
+
+    @Test
+    void rotasjon() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon(a);
+        printArray_char(a);
+    }
+
+    @Test
+            void rotasjon2() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon2(a);
+        printArray_char(a);
+    }
+
+    @Test
+    void rotasjon3() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon(a);
+        printArray_char(a);
     }
 }

@@ -281,4 +281,74 @@ public class Oblig1 {
         aQuicksort(a,0,pivot);
         aQuicksort(a,pivot+1,a.length-1);
     }
+
+    //Oppgave 6
+    public static void rotasjon(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        char første_verdi = a[0]; // lagre første_verdi
+        a[0] = siste_verdi; // setter første verdi lik siste verdi
+        for(int j = 1 ; j <= siste_index; ++j){
+            char temp = a[j-1];
+            a[j] = temp;
+        }
+    }
+    // versjon 2 av rotasjon metode
+    public static void rotasjon2(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        int teller = 0;
+        char temp;
+        //char old = a[0];
+        //char _new = a[1];
+        char old = a[0];
+        char _new ;
+        for(int j = 1; j <= siste_index; ++j){
+           _new = old;
+           old = a[j];
+           a[j] = _new ;
+        }
+        a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
+    }
+
+    public static void rotasjon3(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        char temp;
+        for(int j =siste_index; j>0; --j){
+            a[j] = a[j-1];
+        }
+        a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
+    }
+
+    //Oppgave 6
+    //Vi skal ta i bruk algoritmen i rotasjon2 metode
+    public static void Sirkel_rotasjon2(char [] a, int k){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        int teller = 0;
+        char temp;
+        // I will group my array in n groups of the size |k|
+        int antall_grupper = lengde/k;
+        if(lengde%k ==1){
+            int spesial_index = siste_index-k; // in case lengde%k =1
+            for (int j = 0; j < k ; j++) {
+                bytt_char(a,j,siste_index-j);
+
+            }
+        }
+
+
+
+    }
+
+    private static void bytt_char(char[] a, int j, int i) {
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
 }

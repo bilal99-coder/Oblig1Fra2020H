@@ -286,4 +286,138 @@ public class Oblig1 {
         aQuicksort(a,0,pivot);
         aQuicksort(a,pivot+1,a.length-1);
     }
+
+    //Oppgave 6
+    public static void rotasjon(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        char første_verdi = a[0]; // lagre første_verdi
+        a[0] = siste_verdi; // setter første verdi lik siste verdi
+        for(int j = 1 ; j <= siste_index; ++j){
+            char temp = a[j-1];
+            a[j] = temp;
+        }
+    }
+    // versjon 2 av rotasjon metode
+    public static void rotasjon2(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        int teller = 0;
+        char temp;
+        //char old = a[0];
+        //char _new = a[1];
+        char old = a[0];
+        char _new ;
+        for(int j = 1; j <= siste_index; ++j){
+           _new = old;
+           old = a[j];
+           a[j] = _new ;
+        }
+        a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
+    }
+
+    public static void rotasjon3(char [] a){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        char temp;
+        for(int j =siste_index; j>0; --j){
+            a[j] = a[j-1];
+        }
+        a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
+    }
+
+    //Oppgave 6
+    //Vi skal ta i bruk algoritmen i rotasjon2 metode
+    public static void sirkel_rotasjon2(char [] a, int k){
+        int lengde = a.length;
+        int siste_index = lengde-1;
+        char siste_verdi = a[siste_index];
+        int teller = 0;
+        char temp;
+        // This is for exemp. my input array: {'A','B','C','D','E','F','G','H','I','J'};
+        // I will group my array in n groups of the size |k|
+        int antall_grupper = lengde/k;
+
+            int spesial_index = siste_index-k; // in case lengde%k =1
+            // byttet om første og siste blokk
+            for (int j = 0; j < k ; j++) {
+                bytt_char(a,j,siste_index-(k-j-1));
+            }
+            // output blir: H I J D E F G A B C
+          // bytter om a[k] og a[spesial_index]
+           bytt_char(a,k,spesial_index);
+            //output blir nå: H I J G E F D A B C  k= 3 j= 3 siste_index=9
+           /*                 0 1 2 3 4 5 6 7 8 9
+           * H I J G E F D A B C
+           *
+           * */
+           /*   // Trenger nå å rotere andre blokken
+           for(int j =spesial_index-1; j>=k; --j){
+               a[j] = a[j-2];
+           }*/
+           // Trenger nå å gjøre den tredje blokken til den andre blokken
+           for(int j = k; j <spesial_index; ++j){
+               bytt_char(a,j,siste_index+(k-j));
+           }
+           //Output blir: H I J C B A D F E G
+           bytt_char(a,spesial_index-1,k);
+          // H I J A B C D F E G
+       }
+
+
+    private static void bytt_char(char[] a, int j, int i) {
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public static void nySirkel_Rotasjon(char[] a, int k){
+        if(k==0){
+            return;
+        }
+        if(k>0){
+            for(int j = 0; j<=k; k++){
+                    bytt_char(a,j,j+k);
+            }
+        }
+        else{
+
+        }
+    }
+
+    public static void kompleks_bytting(char []a, int k){
+        int x = 0, y=0;
+        //tilfellet hvor k>0
+        for(int i = 0 ; i<k+1; i++ ){
+            char temp1 = a[x];
+            char temp2 = a[y];
+
+            a[x] = a[y];
+            a[y] = temp1;
+        }
+
+    }
+    public interface Pair<K, V> {
+        public K getKey();
+        public V getValue();
+    }
+public class char_indexPair{
+        public char[]a;
+        public int index;
+        public char_indexPair(char[]a, int index){
+            this.a = a;
+            this.index = index;
+            for (int i = 0; i < a.length ; i++) {
+                return ;
+            }
+        }
+}
+ public static void char_indexPairing(char[]a, int k){
+     for (int i = 0; i < a.length; i++) {
+
+     }
+ }
 }

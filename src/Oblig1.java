@@ -419,5 +419,23 @@ public class char_indexPair{
      for (int i = 0; i < a.length; i++) {
 
      }
- }
+    }
+     //////////oppgave 6 på en ny måte
+     public static int gcd(int a, int b){ //great common divisor. Dette er en funskjon som trenges for å vite antall
+                                         // grupper eller blokker vi kommer å få når vi kommer til dele n elementer
+                                        //av arrayet på grupper
+         if(b==0){
+             return a;
+         }
+
+        else return gcd(b,a%b);
+     }
+
+     public static void  sirkelRoterArray(char[] a, int n, int k){
+        // n er antall elemnter i arrayet
+        // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
+
+     }
+
+
 }

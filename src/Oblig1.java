@@ -431,11 +431,48 @@ public class char_indexPair{
         else return gcd(b,a%b);
      }
 
-     public static void  sirkelRoterArray(char[] a, int n, int k){
+     public static void  sirkelRoterArrayTilVenstre(char[] a, int n, int k){ //mot venstre
         // n er antall elemnter i arrayet
         // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
+         int d,j;
+         char temp;
+
+         for (int i = 0; i < gcd(n,k); i++) { //outer loop - antall sets
+             j = i;
+             temp = a[i];
+
+             while(1>0){ // kjører uendelig til at den "breaks"
+                 d = (j+k) % n;
+                 if(d == i){
+                     break;
+                 }
+                 a[j] = a[d];
+                 j = d;
+             }
+             a[j] = temp;
+         }
 
      }
+    public static void  sirkelRoterArrayTilHøyre(char[] a, int n, int k) { //mot høyre
+        // n er antall elemnter i arrayet
+        // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
+        int d, j;
+        char temp;
+        for (int i = 0; i < gcd(n,k) ; i++) { //outer loop
+             j = i;
+             while (0 < 1){                                 //alltid true betingelse
+                  d = (j+k)%n;
+                  if(d<k){                                  //her er stoppbetingelsen
+                      break;
+                  }
+                  a[d] = a[j];
+                  j = d;
+             }
+             a[d] = temp;
+        }
+
+
+    }
 
 
 }

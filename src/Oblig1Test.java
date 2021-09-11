@@ -224,4 +224,15 @@ class Oblig1Test {
     void sirkel_rotasjon2() {
 
     }
+
+    @Test
+    void sirkelRoterArrayTilVenstre() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.sirkelRoterArrayTilVenstre(a,a.length, 3);
+        printArray_char(a);
+    }
+
+    public static void main(String[] args) {
+        System.out.println((0+3)%10);
+    }
 }

@@ -233,6 +233,14 @@ class Oblig1Test {
     }
 
     public static void main(String[] args) {
-        System.out.println((0+3)%10);
+        System.out.println(Oblig1.gcd(9,3));
+        System.out.println();
+    }
+
+    @Test
+    void sirkelRoterArrayTilHøyre() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.sirkelRoterArrayTilHøyre( a, a.length, 3);
+        printArray_char(a);
     }
 }

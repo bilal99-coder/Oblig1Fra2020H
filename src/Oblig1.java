@@ -431,6 +431,13 @@ public class char_indexPair{
         else return gcd(b,a%b);
      }
 
+     public static int skjekkAntallSets(int n, int k){
+        if(gcd(n,k) ==1){
+            return n/k;
+        }
+        else return gcd(n,k);
+     }
+
      public static void  sirkelRoterArrayTilVenstre(char[] a, int n, int k){ //mot venstre
         // n er antall elemnter i arrayet
         // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
@@ -458,17 +465,20 @@ public class char_indexPair{
         // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
         int d, j;
         char temp;
-        for (int i = 0; i < gcd(n,k) ; i++) { //outer loop
-             j = i;
+        for (int i = 0; i < 3 ; i++) { //outer loop
+             j = (n-k-i-1)%n;
+             d = (j+k)%n;
+             temp = a[d];
              while (0 < 1){                                 //alltid true betingelse
                   d = (j+k)%n;
-                  if(d<k){                                  //her er stoppbetingelsen
+                  if(j<0){                                  //her er stoppbetingelsen
                       break;
                   }
+
                   a[d] = a[j];
-                  j = d;
+                  j = (j-k)%n;
              }
-             a[d] = temp;
+             a[(k-1+i)%k] = temp;
         }
 
 

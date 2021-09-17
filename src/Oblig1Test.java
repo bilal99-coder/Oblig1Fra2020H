@@ -256,5 +256,6 @@ class Oblig1Test {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
         Oblig1.rotasjon( a, 1);
         printArray_char(a);
+
     }
 }

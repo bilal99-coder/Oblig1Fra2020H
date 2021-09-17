@@ -495,6 +495,7 @@ public class char_indexPair{
         }
         else{
             sirkelRoterArrayTilVenstre(a,Math.abs(k));
+
         }
     }
 }

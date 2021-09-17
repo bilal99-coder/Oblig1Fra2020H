@@ -189,11 +189,11 @@ class Oblig1Test {
     }
 
     @Test
-    void universellSort() {
+    void delsortering() {
         int [] a = {6,10,9,4,1,3,8,5,2,7};
         System.out.println("This is the original array: ");
         printArray(a);
-        Oblig1.universellSort(a);
+        Oblig1.delsortering(a);
         System.out.println("\nDette er en universell sortert array");
         printArray(a);
 
@@ -212,13 +212,13 @@ class Oblig1Test {
         Oblig1.rotasjon2(a);
         printArray_char(a);
     }
-
+/*
     @Test
     void rotasjon3() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
         Oblig1.rotasjon3(a);
         printArray_char(a);
-    }
+    }*/
 
     @Test
     void sirkel_rotasjon2() {
@@ -228,7 +228,7 @@ class Oblig1Test {
     @Test
     void sirkelRoterArrayTilVenstre() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
-        Oblig1.sirkelRoterArrayTilVenstre(a,a.length, 3);
+        Oblig1.sirkelRoterArrayTilVenstre(a, 1);
         printArray_char(a);
     }
 
@@ -240,7 +240,21 @@ class Oblig1Test {
     @Test
     void sirkelRoterArrayTilHøyre() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
-        Oblig1.sirkelRoterArrayTilHøyre( a, a.length, 3);
+        Oblig1.sirkelRoterArrayTilHøyre( a, a.length, 1);
+        printArray_char(a);
+    }
+
+    @Test
+    void sirkelRoterArrayTilHøyre1() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.sirkelRoterArrayTilHøyre1( a, 4);
+        printArray_char(a);
+    }
+
+    @Test
+    void testRotasjon() {
+        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon( a, 1);
         printArray_char(a);
     }
 }

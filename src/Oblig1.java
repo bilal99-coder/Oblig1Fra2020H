@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -15,13 +13,13 @@ public class Oblig1 {
             }
         }
         return a[n-1]; // Største verdien ligger nå bakerst i tabellen
-    }
+    }//maks
 
     public static void bytt(int[] a, int i, int j){
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
-    }
+    }//bytt
 
     public static int ombytninger(int [] a){
         int antallOmbytninger = 0;
@@ -281,7 +279,7 @@ public class Oblig1 {
 
 
 
-    public static void universellSort(int [] a){
+    public static void delsortering(int [] a){
         int pivot = sorter_2n(a);
         aQuicksort(a,0,pivot);
         aQuicksort(a,pivot+1,a.length-1);
@@ -292,12 +290,10 @@ public class Oblig1 {
         int lengde = a.length;
         int siste_index = lengde-1;
         char siste_verdi = a[siste_index];
-        char første_verdi = a[0]; // lagre første_verdi
-        a[0] = siste_verdi; // setter første verdi lik siste verdi
-        for(int j = 1 ; j <= siste_index; ++j){
-            char temp = a[j-1];
-            a[j] = temp;
+        for(int j = siste_index ; j >= 1; --j){
+                a[j] = a[j-1];
         }
+        a[0] = siste_verdi; // setter første verdi lik siste verdi
     }
     // versjon 2 av rotasjon metode
     public static void rotasjon2(char [] a){
@@ -317,7 +313,7 @@ public class Oblig1 {
         }
         a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
     }
-
+/*
     public static void rotasjon3(char [] a){
         int lengde = a.length;
         int siste_index = lengde-1;
@@ -327,7 +323,7 @@ public class Oblig1 {
             a[j] = a[j-1];
         }
         a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
-    }
+    }*/
 
     //Oppgave 6
     //Vi skal ta i bruk algoritmen i rotasjon2 metode
@@ -438,13 +434,15 @@ public class char_indexPair{
         else return gcd(n,k);
      }
 
-     public static void  sirkelRoterArrayTilVenstre(char[] a, int n, int k){ //mot venstre
+     public static void  sirkelRoterArrayTilVenstre(char[] a, int k){ //mot venstre
         // n er antall elemnter i arrayet
         // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
          int d,j;
          char temp;
+         int n = a.length;
+         int gd = gcd(n,k);
 
-         for (int i = 0; i < gcd(n,k); i++) { //outer loop - antall sets
+         for (int i = 0; i < gd ; i++) { //outer loop - antall sets
              j = i;
              temp = a[i];
 
@@ -464,8 +462,8 @@ public class char_indexPair{
         // n er antall elemnter i arrayet
         // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
         int d, j;
-        char temp;
-        for (int i = 0; i < 3 ; i++) { //outer loop
+        char temp, temp1;
+        for (int i = 0; i < k ; i++) { //outer loop
              j = (n-k-i-1)%n;
              d = (j+k)%n;
              temp = a[d];
@@ -479,10 +477,24 @@ public class char_indexPair{
                   j = (j-k)%n;
              }
              a[(k-1+i)%k] = temp;
+
         }
 
 
     }
 
+    public static void  sirkelRoterArrayTilHøyre1(char[] a, int k) { //mot høyre
+        for (int i = 0; i < k; i++) {
+            rotasjon(a);
+        }
+    }
 
+    public static void rotasjon(char []a, int k){
+        if(k>=0){
+            sirkelRoterArrayTilHøyre1(a,k);
+        }
+        else{
+            sirkelRoterArrayTilVenstre(a,Math.abs(k));
+        }
+    }
 }

@@ -313,17 +313,7 @@ public class Oblig1 {
         }
         a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
     }
-/*
-    public static void rotasjon3(char [] a){
-        int lengde = a.length;
-        int siste_index = lengde-1;
-        char siste_verdi = a[siste_index];
-        char temp;
-        for(int j =siste_index; j>0; --j){
-            a[j] = a[j-1];
-        }
-        a[0] = siste_verdi; // setter a[0] lik "siste_verdi"
-    }*/
+
 
     //Oppgave 6
     //Vi skal ta i bruk algoritmen i rotasjon2 metode
@@ -383,39 +373,6 @@ public class Oblig1 {
 
         }
     }
-
-    public static void kompleks_bytting(char []a, int k){
-        int x = 0, y=0;
-        //tilfellet hvor k>0
-        for(int i = 0 ; i<k+1; i++ ){
-            char temp1 = a[x];
-            char temp2 = a[y];
-
-            a[x] = a[y];
-            a[y] = temp1;
-        }
-
-    }
-    public interface Pair<K, V> {
-        public K getKey();
-        public V getValue();
-    }
-public class char_indexPair{
-        public char[]a;
-        public int index;
-        public char_indexPair(char[]a, int index){
-            this.a = a;
-            this.index = index;
-            for (int i = 0; i < a.length ; i++) {
-                return ;
-            }
-        }
-}
- public static void char_indexPairing(char[]a, int k){
-     for (int i = 0; i < a.length; i++) {
-
-     }
-    }
      //////////oppgave 6 på en ny måte
      public static int gcd(int a, int b){ //great common divisor. Dette er en funskjon som trenges for å vite antall
                                          // grupper eller blokker vi kommer å få når vi kommer til dele n elementer
@@ -458,32 +415,8 @@ public class char_indexPair{
          }
 
      }
-    public static void  sirkelRoterArrayTilHøyre(char[] a, int n, int k) { //mot høyre
-        // n er antall elemnter i arrayet
-        // k er hvor mange posisjoner  vi vil  flytte arrayet sine elementer
-        int d, j;
-        char temp, temp1;
-        for (int i = 0; i < k ; i++) { //outer loop
-             j = (n-k-i-1)%n;
-             d = (j+k)%n;
-             temp = a[d];
-             while (0 < 1){                                 //alltid true betingelse
-                  d = (j+k)%n;
-                  if(j<0){                                  //her er stoppbetingelsen
-                      break;
-                  }
 
-                  a[d] = a[j];
-                  j = (j-k)%n;
-             }
-             a[(k-1+i)%k] = temp;
-
-        }
-
-
-    }
-
-    public static void  sirkelRoterArrayTilHøyre1(char[] a, int k) { //mot høyre
+    public static void  sirkelRoterArrayTilHøyre(char[] a, int k) { //mot høyre
         for (int i = 0; i < k; i++) {
             rotasjon(a);
         }
@@ -491,7 +424,7 @@ public class char_indexPair{
 
     public static void rotasjon(char []a, int k){
         if(k>=0){
-            sirkelRoterArrayTilHøyre1(a,k);
+            sirkelRoterArrayTilHøyre(a,k);
         }
         else{
             sirkelRoterArrayTilVenstre(a,Math.abs(k));

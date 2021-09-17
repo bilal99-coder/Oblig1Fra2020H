@@ -237,17 +237,12 @@ class Oblig1Test {
         System.out.println();
     }
 
+
+
     @Test
     void sirkelRoterArrayTilHøyre() {
         char [] a = {'A','B','C','D','E','F','G','H','I','J'};
-        Oblig1.sirkelRoterArrayTilHøyre( a, a.length, 1);
-        printArray_char(a);
-    }
-
-    @Test
-    void sirkelRoterArrayTilHøyre1() {
-        char [] a = {'A','B','C','D','E','F','G','H','I','J'};
-        Oblig1.sirkelRoterArrayTilHøyre1( a, 4);
+        Oblig1.sirkelRoterArrayTilHøyre( a, 2);
         printArray_char(a);
     }
 
